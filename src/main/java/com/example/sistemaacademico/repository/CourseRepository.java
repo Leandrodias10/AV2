@@ -1,5 +1,13 @@
-package com.example.sistemaacademico.repository;
+package com.example.repository;
 
-import com.example.sistemaacademico.model.Course;
+import com.example.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
-public interface CourseRepository extends JpaRepository<Course, Long> {}
+import org.springframework.stereotype.Repository;
+import java.util.Optional;
+import java.util.List;
+
+@Repository
+public interface CourseRepository extends JpaRepository<Course, Long> {
+    Optional<Course> findByCode(String code);
+    List<Course> findByStatus(Course.CourseStatus status);
+}
